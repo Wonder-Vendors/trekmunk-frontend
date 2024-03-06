@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.buttonShadcn{
+    @apply hover:bg-orange-300 bg-orange-500;
+}
+
