@@ -5,6 +5,10 @@ const nextConfig = {
             {
                 protocol:"https",
                 hostname:"trekmunk.b-cdn.net"
+            },
+            {
+                protocol:"https",
+                hostname:"www.trekmunk.com"
             }
         ]
     }

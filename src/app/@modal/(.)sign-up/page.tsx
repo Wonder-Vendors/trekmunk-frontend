@@ -10,17 +10,17 @@ export default function Login() {
   return (
     <Modal type="signUp">
       <div className="bg-white w-full h-full flex">
-        <div className="w-[40%] h-full relative flex-shrink-0">
+        {/* <div className="w-[40%] h-full relative flex-shrink-0">
           <Image
             src={"/expedition.jpg"}
             fill
             alt="cover image"
             className="object-cover"
           />
-        </div>
+        </div> */}
         <div className="p-10 flex flex-col gap-5 flex-grow relative">
           <div className="flex justify-between items-center">
-            <p className="font-light text-2xl w-full">Sign in</p>
+            <p className="font-light text-2xl w-full">Sign Up</p>
             {/* TODO: FIX "X" position */}
             <X
               className="text-black w-6 h-6 stroke-[1px] cursor-pointer"

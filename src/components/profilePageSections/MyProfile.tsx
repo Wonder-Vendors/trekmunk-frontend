@@ -14,33 +14,23 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
+import { useSelector } from "react-redux";
+import { selectUser } from "@/redux/reducers/userSlice";
+import { redirect } from "next/navigation";
 
-const user = {
-  firstName: "sdsd",
-  lastName: "sds",
-  email: "ciyame1586@hidelux.com",
-  password: "7ac37455cceb865a898f8ff42b340b97f0474b1a81596a267b02f456645a5436",
-  phoneNumber: "7678336946",
-  isEmailValid: false,
-  isPhoneNumberValid: false,
-  image: "/user.png",
-  gender: "Male",
-  age: 17,
-  rewardPoints: 0,
-  role: "user",
-};
 
 const MyProfile = () => {
   const [isEnableEdit,setIsEnableEdit] = useState(false)
-  console.log("@@",isEnableEdit)
+  const {user} = useSelector(selectUser)
   const capatilizeString = (string: string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
   };
   const handleContinueAction = () => {
     setIsEnableEdit(true)
   };
-  return (
-    <div className="p-10 w-full h-fit">
+  if(user){
+    return(
+      <div className="p-10 w-full h-fit">
       {/* avtar, name , points */}
       <div className="flex items-center justify-between w-full mb-8">
         <div className="flex items-center gap-2">
@@ -48,14 +38,14 @@ const MyProfile = () => {
           <Avatar className="w-20 h-20">
             <AvatarImage src={user.image} />
             <AvatarFallback>
-              {user.firstName[0].toUpperCase() + user.lastName[0].toUpperCase()}
+              {user.name.toUpperCase() + "".toUpperCase()}
             </AvatarFallback>
           </Avatar>
           {/* Name */}
           <p>
-            {capatilizeString(user.firstName) +
+            {capatilizeString(user.name) +
               " " +
-              capatilizeString(user.lastName)}
+              capatilizeString("")}
           </p>
         </div>
         {/* rewards */}
@@ -85,8 +75,8 @@ const MyProfile = () => {
 
       <UserProfileForm
         enableEdit = {isEnableEdit}
-        firstName={user.firstName}
-        lastName={user.lastName}
+        firstName={user.name}
+        lastName={""}
         email={user.email}
         phoneNumber={user.phoneNumber}
         isEmailValid={user.isEmailValid}
@@ -95,7 +85,8 @@ const MyProfile = () => {
         age={user.age}
       />
     </div>
-  );
+    )
+  }
 };
 
 export default MyProfile;

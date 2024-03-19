@@ -47,7 +47,7 @@ function TreksCarousel() {
       >
         <CarouselContent className="-ml-1">
           {Array.from({ length: 5 }).map((_, index) => (
-            <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/4 pl-4">
+            <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/4 pl-4 cursor-pointer">
               <div className="p-1">
               <div className=" shadow-gray-400 shadow h-[400px] lg:h-[450px] w-full cursor-pointer group hover:shadow-gray-400 transition-all transform duration-500">
                 <div className="w-full relative h-[45%] group-hover:opacity-80 transition-opacity transform duration-500">

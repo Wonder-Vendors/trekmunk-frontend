@@ -5,7 +5,7 @@ type InitialState = {
         loading: boolean,
         error: any,
         user: any,
-        token: string | null
+        successRoute:string | null
     },
     signin: {
         loading: boolean,
@@ -66,7 +66,7 @@ const initialState = {
         loading: false,
         error: null,
         user: null,
-        token: null
+        successRoute:null
     },
     signin: {
         loading: false,
@@ -130,19 +130,19 @@ export const userRequests = createSlice({
         state.signup.loading = true;
         state.signup.error = null;
         state.signup.user = null;
-        state.signup.token = null;
+   
     },
     signup_success: (state, action) => {
         state.signup.loading = false;
         state.signup.error = null;
         state.signup.user = action.payload;
-        state.signup.token = action.payload.token;
+        state.signup.successRoute = action.payload;
     },
     signup_failure: (state, action) => {
         state.signup.loading = false;
-        state.signup.error = action.payload.error;
+        state.signup.error = action.payload;
         state.signup.user = null;
-        state.signup.token = null;
+  
     },
     
     // sign in reducers 
@@ -241,7 +241,7 @@ export const userRequests = createSlice({
         },
         getUser_failure: (state, action) => {
             state.getUser.loading = false;
-            state.getUser.error =  action.payload.error;
+            state.getUser.error =  action.payload;
             state.getUser.status =  false;
         },
         // updateUser

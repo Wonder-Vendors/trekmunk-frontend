@@ -6,4 +6,12 @@
 .buttonShadcn{
     @apply hover:bg-orange-300 bg-orange-500;
 }
+.heading{
+    @apply w-full text-center text-3xl font-light tracking-wider mb-4 uppercase;
+    
+}
+.subheading{
+    @apply w-full text-left lg:text-xl font-light tracking-wider md:text-lg;
+    
+}
 

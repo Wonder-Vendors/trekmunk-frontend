@@ -1,3 +1,5 @@
+"use client"
+// TODO: try to fix useSelector in server
 import {
   Drawer,
   DrawerClose,
@@ -8,11 +10,13 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
-import { Button } from "../ui/button";
 import { Menu } from "lucide-react";
 import Image from "next/image";
-import { cn } from "@/lib/utils";
+import { cn, isNotEmpty } from "@/lib/utils";
 import Link from "next/link";
+import { useDispatch, useSelector } from "react-redux";
+import { selectUser, setUser } from "@/redux/reducers/userSlice";
+import { useEffect } from "react";
 
 const navOptions = [
     {id:0,title:"Home",selected:true},
@@ -26,7 +30,12 @@ const navOptions = [
     {id:8,title:"Contact",selected:false},
 ]
 
-export default function NavigationOption  () {
+export default function NavigationOption  ({data}:{data:any}) {
+  const dispatch = useDispatch();
+  const {user} = useSelector(selectUser)
+  useEffect(()=>{
+    dispatch(setUser(data))
+  },[])
   return (
     <Drawer modal={false}>
       <DrawerTrigger>
@@ -41,8 +50,8 @@ export default function NavigationOption  () {
             </div>
           </DrawerTitle>
         
-          <Link href={"/login"}>
-            <p>Sign In</p>
+          <Link href={user?`/profile/${user?._id}`:"/login"}>
+            <p>{user?`${user?.name}`:"Sign In"}</p>
           </Link>
           
         </DrawerHeader>

@@ -18,7 +18,7 @@ import ButtonAnimated from "@/components/ui/ButtonAnimated";
 import Link from "next/link";
 
 import { useRouter } from "next/navigation";
-import { selectUser, setUser } from "@/redux/reducers/userSlice";
+import { setUser } from "@/redux/reducers/userSlice";
 import { useSelector } from "react-redux";
 import { useAuth } from "@/hooks/useAuth";
 import { selectSignIn } from "@/redux/reducers/userRequestReducer";
@@ -50,8 +50,8 @@ export default function SignInForm() {
       console.log("errorSub",error)
       return;
     }
-    if(user?.user && !loading){
-      dispatch(setUser(user.user))
+    if(user && !loading){
+      dispatch(setUser(user))
       app.replace("/")
       app.refresh()
       console.log("@@",user,loading)

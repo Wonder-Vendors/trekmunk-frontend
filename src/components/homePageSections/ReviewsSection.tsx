@@ -11,7 +11,7 @@ import Image from "next/image";
 function ReviewsSection() {
   return (
     <div className="w-full my-8 flex flex-col gap-4">
-      <p className="text-center text-2xl lg:text-[40px] tracking-wider font-thin">
+      <p className="heading">
         REVIEWS
       </p>
       <div className="flex flex-col items-center h-[500px] overflow-hidden">
